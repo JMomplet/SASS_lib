@@ -1,0 +1,222 @@
+/* 
+   Sass Reset
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4,
+h5, h6, p, blockquote, pre, a, abbr, acronym, address, big,
+cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small,
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd,
+ol, ul, li, fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+details, embed, figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary, time, mark, audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer,
+header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: 'CabinRegular';
+  src: url("fonts/Cabin-Regular-webfont.eot");
+  src: url("fonts/Cabin-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Cabin-Regular-webfont.woff") format("woff"), url("fonts/Cabin-Regular-webfont.ttf") format("truetype"), url("fonts/Cabin-Regular-webfont.svg#CabinRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CabinItalic';
+  src: url("fonts/Cabin-Italic-webfont.eot");
+  src: url("fonts/Cabin-Italic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Cabin-Italic-webfont.woff") format("woff"), url("fonts/Cabin-Italic-webfont.ttf") format("truetype"), url("fonts/Cabin-Italic-webfont.svg#CabinItalic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CabinMedium';
+  src: url("fonts/Cabin-Medium-webfont.eot");
+  src: url("fonts/Cabin-Medium-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Cabin-Medium-webfont.woff") format("woff"), url("fonts/Cabin-Medium-webfont.ttf") format("truetype"), url("fonts/Cabin-Medium-webfont.svg#CabinMedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CabinMediumItalic';
+  src: url("fonts/Cabin-MediumItalic-webfont.eot");
+  src: url("fonts/Cabin-MediumItalic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Cabin-MediumItalic-webfont.woff") format("woff"), url("fonts/Cabin-MediumItalic-webfont.ttf") format("truetype"), url("fonts/Cabin-MediumItalic-webfont.svg#CabinMediumItalic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CabinSemiBold';
+  src: url("fonts/Cabin-SemiBold-webfont.eot");
+  src: url("fonts/Cabin-SemiBold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Cabin-SemiBold-webfont.woff") format("woff"), url("fonts/Cabin-SemiBold-webfont.ttf") format("truetype"), url("fonts/Cabin-SemiBold-webfont.svg#CabinSemiBold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CabinSemiBoldItalic';
+  src: url("fonts/Cabin-SemiBoldItalic-webfont.eot");
+  src: url("fonts/Cabin-SemiBoldItalic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Cabin-SemiBoldItalic-webfont.woff") format("woff"), url("fonts/Cabin-SemiBoldItalic-webfont.ttf") format("truetype"), url("fonts/Cabin-SemiBoldItalic-webfont.svg#CabinSemiBoldItalic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CabinBold';
+  src: url("fonts/Cabin-Bold-webfont.eot");
+  src: url("fonts/Cabin-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Cabin-Bold-webfont.woff") format("woff"), url("fonts/Cabin-Bold-webfont.ttf") format("truetype"), url("fonts/Cabin-Bold-webfont.svg#CabinBold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CabinBoldItalic';
+  src: url("fonts/Cabin-BoldItalic-webfont.eot");
+  src: url("fonts/Cabin-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Cabin-BoldItalic-webfont.woff") format("woff"), url("fonts/Cabin-BoldItalic-webfont.ttf") format("truetype"), url("fonts/Cabin-BoldItalic-webfont.svg#CabinBoldItalic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DroidSansRegular';
+  src: url("fonts/DroidSans-webfont.eot");
+  src: url("fonts/DroidSans-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/DroidSans-webfont.woff") format("woff"), url("fonts/DroidSans-webfont.ttf") format("truetype"), url("fonts/DroidSans-webfont.svg#DroidSansRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DroidSansBold';
+  src: url("fonts/DroidSans-Bold-webfont.eot");
+  src: url("fonts/DroidSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/DroidSans-Bold-webfont.woff") format("woff"), url("fonts/DroidSans-Bold-webfont.ttf") format("truetype"), url("fonts/DroidSans-Bold-webfont.svg#DroidSansBold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "CabinRegular";
+}
+
+#container {
+  width: 960px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: #00e6b6;
+  background: -moz-linear-gradient(top, #00e6b6 0%, #e60030 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #00e6b6), color-stop(100%, #e60030));
+  background: linear-gradient(to bottom, #00e6b6 0%, #e60030 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF00E6B6', endColorstr='#FFE60030', GradientType=0);
+  background: -webkit-linear-gradient(top, #00e6b6 0%, #e60030 100%);
+  background: -o-linear-gradient(top, #00e6b6 0%, #e60030 100%);
+  background: -ms-linear-gradient(top, #00e6b6 0%, #e60030 100%);
+}
+
+.box, #main, #analog1, #analog2, #analog3, #analog {
+  width: 300px;
+  height: 70px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+#main {
+  background-color: #00e6b6;
+  color: #004d3d;
+  box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0, inset rgba(0, 0, 0, 0.05) 0 1px 0;
+  font-size: 50px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+#analog1 {
+  background-color: #4300e6;
+}
+
+#analog2 {
+  background-color: #e60030;
+}
+
+#analog3 {
+  background-color: #a3e600;
+}
+
+#analog {
+  background-color: #e60030;
+}
+
+ul {
+  background-color: #00e6b6;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+ul > li {
+  display: block;
+  float: left;
+  background-color: #e60030;
+  padding: 1em 0.5em 0.3em 0.5em;
+  font-family: "DroidSansBold";
+  color: black;
+}
+ul > li:hover {
+  background-color: #00e6b6;
+  color: black;
+}
+ul > li:last-child {
+  margin-right: 0;
+}
+
+#float-container {
+  width: 600px;
+  background-color: rgba(0, 0, 0, 0.5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000, endColorstr=#80000000);
+}
+#float-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#float-container div {
+  height: 300px;
+  float: left;
+}

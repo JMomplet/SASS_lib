@@ -1,0 +1,73 @@
+@import "reset";
+@import "mixins";
+@import "font-faces";
+
+@include font-face-Cabin;
+@include font-face-Droid-Sans;
+
+$main_color: #00e6b6;
+$analog1: adjust_hue($main_color, 90);
+$analog2: adjust_hue($main_color, 180);
+$analog3: adjust_hue($main_color, 270);
+$comp_color: complement($main_color);
+
+body {
+    font-family: "CabinRegular";
+}
+
+#container {
+    @include main-container(960px);
+    @include linear-gradient(top, $main_color, $comp_color);
+}
+
+.box {
+    width: 300px;
+    height: 70px;
+    @include box-sizing(border-box);
+}
+
+#main {
+    @extend .box;
+    background-color: $main_color;
+    color: darken($main_color, 30%);
+    @include box-emboss(0.9, 0.05);
+    font-size: 50px;
+    @include letterpress(0.5);
+}
+
+@for $i from 1 through 3 {
+    #analog#{$i} {
+        @extend .box;
+        background-color: adjust_hue($main_color, 90*$i);
+    }
+}
+
+#analog {
+    @extend .box;
+    background-color: $comp_color;
+}
+
+ul {
+    background-color: $main_color;
+    @include vertical-menu {
+        background-color: $comp_color;
+        padding: 1em 0.5em 0.3em 0.5em;
+        font-family: "DroidSansBold";
+        color: darken($comp_color, 50%);
+        &:hover {
+            background-color: $main_color;
+            color: darken($main_color, 50%);
+        }
+    }
+}
+
+#float-container {
+    @include clearfix;
+    width: 600px;
+    background-color: black(0.5);
+    @include ie-background-color-rgba(0, 0, 0, 0.5);
+    div {
+        height: 300px;
+        float: left;
+    }
+}
