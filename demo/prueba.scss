@@ -1,6 +1,6 @@
-@import "reset";
-@import "mixins";
-@import "font-faces";
+@import "../imports/_reset";
+@import "../imports/_mixins";
+@import "../imports/_font-faces";
 
 @include font-face-Cabin;
 @include font-face-Droid-Sans;
