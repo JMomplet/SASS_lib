@@ -1,8 +1,5 @@
 SASS_lib
 ========
-
-A set of utilities for SASS.
-
 This is my personal set of mixins and functions for SASS.
 
 It includes:
