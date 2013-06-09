@@ -1,0 +1,16 @@
+@import "imports/reset";
+@import "imports/font-faces";
+@import "imports/mixins";
+
+@include font-face-Cabin;
+
+body {
+    font-family: "CabinRegular";
+}
+
+#main_container {
+    @include main-container(960px);
+    @include border-radius(10px);
+    background-color: rgb(186, 186, 186);
+    min-height: 900px;
+}

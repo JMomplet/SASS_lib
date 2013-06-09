@@ -7,9 +7,7 @@
     $ie-first-color: ie_hex_str($first-color);
     $ie-second-color: ie_hex_str($second-color);
 
-//Fallback
-    background: $first-color;
-
+    background: $first-color; //Fallback
     background: -moz-linear-gradient(#{$init-pos}, $first-color 0%, $second-color 100%);
     @if($init-pos == "top"){
         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $first-color), color-stop(100%, $second-color));
@@ -40,9 +38,7 @@
     $ie-first-color: ie_hex_str($first-color);
     $ie-second-color: ie_hex_str($second-color);
 
-//Fallback
-    background: $first-color;
-
+    background: $first-color; //Fallback
     background: -moz-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
     background: -webkit-gradient(radial, $init-pos $init-pos, 0px, $init-pos $init-pos, 100%, color-stop(0%, $first-color), color-stop(100%, $second-color));
     background: -webkit-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
