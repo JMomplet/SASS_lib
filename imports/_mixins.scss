@@ -1,121 +1,148 @@
-@mixin ie-background-color-rgba($r, $g, $b, $a) {
-    $ie-hex: ie_hex_str(rgba($r, $g, $b, $a));
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex}, endColorstr=#{$ie-hex});
-}
-
-@mixin linear-gradient($init-pos, $first-color, $second-color) {
-    $ie-first-color: ie_hex_str($first-color);
-    $ie-second-color: ie_hex_str($second-color);
-
-//Fallback
-    background: $first-color;
-
-    background: -moz-linear-gradient(#{$init-pos}, $first-color 0%, $second-color 100%);
-    @if($init-pos == "top"){
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $first-color), color-stop(100%, $second-color));
-        background: linear-gradient(to bottom, $first-color 0%, $second-color 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-first-color}', endColorstr='#{$ie-second-color}', GradientType=0);
-    }
-    @if($init-pos == "bottom") {
-        background: -webkit-gradient(linear, left bottom, left top);
-        background: linear-gradient(to top, $first-color 0%, $second-color 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-second-color}', endColorstr='#{$ie-first-color}', GradientType=0);
-    }
-    @if($init-pos == "left") {
-        background: -webkit-gradient(linear, left top, right top);
-        background: linear-gradient(to right, $first-color 0%, $second-color 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-first-color}', endColorstr='#{$ie-second-color}', GradientType=1);
-    }
-    @if($init-pos == "right") {
-        background: -webkit-gradient(linear, right top, left top);
-        background: linear-gradient(to left, $first-color 0%, $second-color 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-second-color}', endColorstr='#{$ie-first-color}', GradientType=1);
-    }
-    background: -webkit-linear-gradient(#{$init-pos}, $first-color 0%, $second-color 100%);
-    background: -o-linear-gradient(#{$init-pos}, $first-color 0%, $second-color 100%);
-    background: -ms-linear-gradient(#{$init-pos}, $first-color 0%, $second-color 100%);
-}
-
-@mixin radial-gradient($init-pos, $first-color, $second-color) {
-    $ie-first-color: ie_hex_str($first-color);
-    $ie-second-color: ie_hex_str($second-color);
-
-//Fallback
-    background: $first-color;
-
-    background: -moz-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
-    background: -webkit-gradient(radial, $init-pos $init-pos, 0px, $init-pos $init-pos, 100%, color-stop(0%, $first-color), color-stop(100%, $second-color));
-    background: -webkit-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
-    background: -o-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
-    background: -ms-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
-    background: radial-gradient(ellipse at $init-pos, $first-color 0%, $second-color 100%);
-
-//Fallback. Linear for IE6-9
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-first-color}', endColorstr='#{$ie-second-color}', GradientType=0);
-}
-
-@function white($opacity) {
-    @return rgba(255, 255, 255, $opacity);
-}
-
-@function black($opacity) {
-    @return rgba(0, 0, 0, $opacity);
-}
-
-@mixin main-container($size) {
-    width: $size;
-    margin: 0 auto;
-    @include box-sizing(border-box);
-}
-
-@mixin clearfix {
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
-
-@mixin box-emboss($opacity-bottom, $opacity-top) {
-    box-shadow: white($opacity-bottom) 0 1px 0, inset black($opacity-top) 0 1px 0;
-}
-
-@mixin letterpress($opacity) {
-    text-shadow: 0 1px 0 white($opacity);
-}
-
-@mixin vertical-menu {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    > li {
-        display: block;
-        float: left;
-        @content;
-        &:last-child {
-            margin-right: 0;
-        }
-    }
-}
-
-//Properties
+/**
+ * Properties with multiple vendor prefixes
+ */
 @mixin opacity($opacity) {
-    filter: alpha(opacity=$opacity*100);
-    opacity: $opacity;
+	filter: alpha(opacity=$opacity*100);
+	opacity: $opacity;
 }
 
-@mixin border-radius($size) {
-    border-radius: $size;
-    -moz-border-radius: $size;
-    -webkit-border-radius: $size;
-    -o-border-radius: $size;
-    -khtml-border-radius: $size;
+@mixin transition($content) {
+	-webkit-transition: $content;
+	-moz-transition: $content;
+	-ms-transition: $content;
+	-o-transition: $content;
+	transition: $content;
+}
+
+@mixin border-radius($size...) {
+	-webkit-border-radius: $size;
+	-moz-border-radius: $size;
+	-o-border-radius: $size;
+	-khtml-border-radius: $size;
+	border-radius: $size;
 }
 
 @mixin box-sizing($option) {
-    box-sizing: $option;
-    -moz-box-sizing: $option;
-    -webkit-box-sizing: $option;
+	-webkit-box-sizing: $option;
+	-moz-box-sizing: $option;
+	box-sizing: $option;
 }
+
+@mixin box-shadow($content...) {
+	-webkit-box-shadow: #{$content};
+	-moz-box-shadow: #{$content};
+	box-shadow: #{$content};
+}
+
+@mixin ie-background-color-rgba($r, $g, $b, $a) {
+	$ie-hex: ie_hex_str(rgba($r, $g, $b, $a));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex}, endColorstr=#{$ie-hex});
+}
+
+@mixin linear-gradient($init-pos, $first-color, $second-color) {
+	$ie-first-color: ie_hex_str($first-color);
+	$ie-second-color: ie_hex_str($second-color);
+
+	background: $first-color;	//Fallback
+
+	background: -moz-linear-gradient(#{$init-pos}, $first-color 0%, $second-color 100%);
+	@if($init-pos == "top"){
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $first-color), color-stop(100%, $second-color));
+		background: linear-gradient(to bottom, $first-color 0%, $second-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-first-color}', endColorstr='#{$ie-second-color}', GradientType=0);
+	}
+	@if($init-pos == "bottom") {
+		background: -webkit-gradient(linear, left bottom, left top);
+		background: linear-gradient(to top, $first-color 0%, $second-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-second-color}', endColorstr='#{$ie-first-color}', GradientType=0);
+	}
+	@if($init-pos == "left") {
+		background: -webkit-gradient(linear, left top, right top);
+		background: linear-gradient(to right, $first-color 0%, $second-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-first-color}', endColorstr='#{$ie-second-color}', GradientType=1);
+	}
+	@if($init-pos == "right") {
+		background: -webkit-gradient(linear, right top, left top);
+		background: linear-gradient(to left, $first-color 0%, $second-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-second-color}', endColorstr='#{$ie-first-color}', GradientType=1);
+	}
+	background: -webkit-linear-gradient(#{$init-pos}, $first-color 0%, $second-color 100%);
+	background: -o-linear-gradient(#{$init-pos}, $first-color 0%, $second-color 100%);
+	background: -ms-linear-gradient(#{$init-pos}, $first-color 0%, $second-color 100%);
+}
+
+@mixin radial-gradient($init-pos, $first-color, $second-color) {
+	$ie-first-color: ie_hex_str($first-color);
+	$ie-second-color: ie_hex_str($second-color);
+
+	background: $first-color;	//Fallback
+
+	background: -moz-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
+	background: -webkit-gradient(radial, $init-pos $init-pos, 0px, $init-pos $init-pos, 100%, color-stop(0%, $first-color), color-stop(100%, $second-color));
+	background: -webkit-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
+	background: -o-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
+	background: -ms-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
+	background: radial-gradient(ellipse at $init-pos, $first-color 0%, $second-color 100%);
+
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-first-color}', endColorstr='#{$ie-second-color}', GradientType=0);	//Fallback. Linear for IE6-9
+}
+
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin non-selectable {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@mixin box-emboss {
+	@include box-shadow(0 1px 2px rgba(0, 0, 0, 0.25) inset, 0 1px 2px rgba(255, 255, 255, 0.1));
+}
+
+@mixin vertical-menu {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	> li {
+		display: block;
+		float: left;
+		@content;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
+@mixin circle($diameter) {
+	width: $diameter;
+	height: $diameter;
+	@include border-radius($diameter/2);
+}
+
+@mixin placeholder {
+	&:-moz-placeholder {
+		@content;
+	}
+	&::-moz-placeholder {
+		@content;
+	}
+	&::-webkit-input-placeholder {
+		@content;
+	}
+	&:-ms-input-placeholder {
+		@content;
+	}
+
+}
+
 
