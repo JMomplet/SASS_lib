@@ -222,6 +222,7 @@ pip-log.txt
 #############
 ## Personal
 #############
+.sass-cache/
 *.css
 *.html
 
