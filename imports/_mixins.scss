@@ -1,11 +1,18 @@
+/* ======================================== */
+/* Properties with multiple vendor prefixes */
+/* ======================================== */
+
 /**
- * Properties with multiple vendor prefixes
+ * Shortcut to write in one line the opacity property for all browsers
  */
 @mixin opacity($opacity) {
 	filter: alpha(opacity=$opacity*100);
 	opacity: $opacity;
 }
 
+/**
+ * Shortcut to write in one line the transition property for all browsers
+ */
 @mixin transition($content) {
 	-webkit-transition: $content;
 	-moz-transition: $content;
@@ -14,7 +21,10 @@
 	transition: $content;
 }
 
-@mixin border-radius($size...) {
+/**
+ * Shortcut to write in one line the border-radius property for all browsers
+ */
+@mixin border-radius($size) {
 	-webkit-border-radius: $size;
 	-moz-border-radius: $size;
 	-o-border-radius: $size;
@@ -22,18 +32,27 @@
 	border-radius: $size;
 }
 
+/**
+ * Shortcut to write in one line the box-sizing property for all browsers
+ */
 @mixin box-sizing($option) {
 	-webkit-box-sizing: $option;
 	-moz-box-sizing: $option;
 	box-sizing: $option;
 }
 
+/**
+ * Shortcut to write in one line the box-shadow property for all browsers
+ */
 @mixin box-shadow($content...) {
 	-webkit-box-shadow: #{$content};
 	-moz-box-shadow: #{$content};
 	box-shadow: #{$content};
 }
 
+/**
+ * Makes an element non-selectable in all browsers
+ */
 @mixin non-selectable {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -43,19 +62,26 @@
 	user-select: none;
 }
 
+/* ============= */
+/* Various hacks */
+/* ============= */
+
 /**
- * Various hacks
+ * Mixin to be able to set a RGBA color to the background-color of an element in IE
  */
-@mixin ie-background-color-rgba($r, $g, $b, $a) {
-	$ie-hex: ie_hex_str(rgba($r, $g, $b, $a));
+@mixin ie-background-color-rgba($rgba) {
+	$ie-hex: ie_hex_str($rgba);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex}, endColorstr=#{$ie-hex});
 }
 
+/**
+ * Mixin to make easier to set a simple linear gradient as background-color for all browsers
+ */
 @mixin linear-gradient($init-pos, $first-color, $second-color) {
 	$ie-first-color: ie_hex_str($first-color);
 	$ie-second-color: ie_hex_str($second-color);
 
-	background: $first-color;	//Fallback
+	background: $first-color; //Fallback
 
 	background: -moz-linear-gradient(#{$init-pos}, $first-color 0%, $second-color 100%);
 	@if($init-pos == "top"){
@@ -83,11 +109,14 @@
 	background: -ms-linear-gradient(#{$init-pos}, $first-color 0%, $second-color 100%);
 }
 
+/**
+ * Mixin to make easier to set a simple radial gradient as background-color for all browsers
+ */
 @mixin radial-gradient($init-pos, $first-color, $second-color) {
 	$ie-first-color: ie_hex_str($first-color);
 	$ie-second-color: ie_hex_str($second-color);
 
-	background: $first-color;	//Fallback
+	background: $first-color; //Fallback
 
 	background: -moz-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
 	background: -webkit-gradient(radial, $init-pos $init-pos, 0px, $init-pos $init-pos, 100%, color-stop(0%, $first-color), color-stop(100%, $second-color));
@@ -96,9 +125,12 @@
 	background: -ms-radial-gradient($init-pos, ellipse cover, $first-color 0%, $second-color 100%);
 	background: radial-gradient(ellipse at $init-pos, $first-color 0%, $second-color 100%);
 
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-first-color}', endColorstr='#{$ie-second-color}', GradientType=0);	//Fallback. Linear for IE6-9
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ie-first-color}', endColorstr='#{$ie-second-color}', GradientType=0); //Fallback. Linear for IE6-9
 }
 
+/**
+ * Mixin to make easier to use the clearfix hack
+ */
 @mixin clearfix {
 	&:after {
 		content: "";
@@ -107,13 +139,22 @@
 	}
 }
 
+/* ============= */
+/* Miscellaneous */
+/* ============= */
+
 /**
- * Miscellaneous
+ * Makes easier to set the CSS necessary to make a box emboss effect
  */
 @mixin box-emboss {
 	@include box-shadow(0 1px 2px rgba(0, 0, 0, 0.25) inset, 0 1px 2px rgba(255, 255, 255, 0.1));
 }
 
+/**
+ * Mixin to simplify making vertical menus with UL>LI
+ *
+ * @content To be able to set style to the inner LI element
+ */
 @mixin vertical-menu {
 	list-style-type: none;
 	padding: 0;
@@ -129,12 +170,18 @@
 	}
 }
 
+/**
+ * An easy way of making an element a circle
+ */
 @mixin circle($diameter) {
 	width: $diameter;
 	height: $diameter;
 	@include border-radius($diameter/2);
 }
 
+/**
+ * Mixin to be able to set style to an element's placeholder with a unique declaration (cross-browser)
+ */
 @mixin placeholder {
 	&:-moz-placeholder {
 		@content;
