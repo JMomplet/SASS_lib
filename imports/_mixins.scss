@@ -13,7 +13,7 @@
 /**
  * Shortcut to write in one line the transition property for all browsers
  */
-@mixin transition($content) {
+@mixin transition($content...) {
 	-webkit-transition: $content;
 	-moz-transition: $content;
 	-ms-transition: $content;
@@ -28,7 +28,6 @@
 	-webkit-border-radius: $size;
 	-moz-border-radius: $size;
 	-o-border-radius: $size;
-	-khtml-border-radius: $size;
 	border-radius: $size;
 }
 
@@ -42,12 +41,39 @@
 }
 
 /**
+ * Alias for box-sizing(border-box);
+ */
+@mixin border-box {
+	@include box-sizing(border-box);
+}
+
+/**
  * Shortcut to write in one line the box-shadow property for all browsers
  */
 @mixin box-shadow($content...) {
 	-webkit-box-shadow: #{$content};
 	-moz-box-shadow: #{$content};
 	box-shadow: #{$content};
+}
+
+/**
+ * Shortcut to write in one line the transform property for all browsers
+ */
+@mixin transform($content...) {
+	-webkit-transform: #{$content};
+	-moz-transform: #{$content};
+	-ms-transform: #{$content};
+	-o-transform: #{$content};
+	transform: #{$content};
+}
+
+/**
+ * Shortcut to write in one line the background-clip property for all browsers
+ */
+@mixin background-clip($content) {
+	-webkit-background-clip: #{$content};
+	-moz-background-clip: #{$content};
+	background-clip: #{$content};
 }
 
 /**
@@ -196,6 +222,18 @@
 		@content;
 	}
 
+}
+
+/**
+ * Mixin to simplify the ::selection pseudo-element
+ */
+@mixin selection {
+	&::-moz-selection {
+		@content;
+	}
+	&::selection {
+		@content;
+	}
 }
 
 
