@@ -56,6 +56,10 @@
 	box-shadow: #{$content};
 }
 
+@mixin text-shadow($content...){
+	text-shadow: #{$content};
+}
+
 /**
  * Shortcut to write in one line the transform property for all browsers
  */
@@ -235,5 +239,3 @@
 		@content;
 	}
 }
-
-
